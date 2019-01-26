@@ -15,13 +15,21 @@ pipeline {
         stage('Build DockerImage') {
             steps{
               echo "build docker image"
-              sh 'docker build -t springboot-hystrix:1.0.${BUILD_NUMBER} .'
+            /* sh 'docker build -t springboot-hystrix:1.0.${BUILD_NUMBER} .' */
             }
          }
-         stage('Deploy DockerImage') {
+         /*stage('Deploy DockerImage') {
              steps{
-               sh 'docker run -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --name springboot-hystrix springboot-hystrix:1.0.${BUILD_NUMBER}'
+               sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --name springboot-hystrix springboot-hystrix:1.0.${BUILD_NUMBER}'
              }
           }
+          */
+          stage('Remove Dangling Images'){
+            steps{
+                /*sh 'docker rmi $(docker images -qa -f 'dangling=true')'*/
+               echo 'docker images -qa -f 'dangling=true''
+            }
+          }
+
     }
 }
