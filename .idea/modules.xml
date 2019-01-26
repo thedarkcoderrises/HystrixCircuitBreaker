@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/HystrixCB.iml" filepath="$PROJECT_DIR$/HystrixCB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/HystrixCircuitBreaker.iml" filepath="$PROJECT_DIR$/.idea/HystrixCircuitBreaker.iml" />
     </modules>
   </component>
 </project>
