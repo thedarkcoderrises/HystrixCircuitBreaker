@@ -6,10 +6,17 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
+        stage('Build Artifact') {
             steps {
                 sh 'mvn -X clean install -DskipTests'
             }
         }
+        stage('Build DockerImage') {
+            steps{
+              script {
+                docker build -t springboot-hystrix:1.0+":$BUILD_NUMBER" .
+              }
+            }
+          }
     }
 }
