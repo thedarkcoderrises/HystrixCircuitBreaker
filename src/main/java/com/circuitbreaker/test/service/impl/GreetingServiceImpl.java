@@ -12,7 +12,7 @@ public class GreetingServiceImpl implements GreetingService {
         if("cb".equalsIgnoreCase(username)){
             throw new NullPointerException();
         }
-        return String.format("Hello & Welcome %s!\n", username);
+        return String.format("Hello %s \n Welcome to Docker!\n", username);
     }
 
     private String defaultGreeting(String username) {
