@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent none
     stages {
         stage('Build Artifact') {
         agent {
@@ -13,11 +13,13 @@ pipeline {
             }
         }
         stage('Build DockerImage') {
+        agent any
             steps{
               sh 'docker build -t springboot-hystrix:1.0 .'
             }
          }
          stage('Deploy DockerImage') {
+         agent any
              steps{
                sh 'docker stop springboot-hystrix'
                sh 'docker rm springboot-hystrix'
