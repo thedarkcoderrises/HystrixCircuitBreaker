@@ -27,7 +27,8 @@ pipeline {
           stage('Remove Dangling Images'){
             steps{
                 /*sh 'docker rmi $(docker images -qa -f dangling=true)'*/
-               sh 'docker images -qa -f dangling=true'
+               sh 'docker rmi 6ecd959f1108'
+               sh 'docker rmi 6ecd959f1108'
             }
           }
 
