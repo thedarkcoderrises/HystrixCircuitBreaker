@@ -15,14 +15,15 @@ pipeline {
         stage('Build DockerImage') {
         agent any
             steps{
+              sh 'docker stop springboot-hystrix'
+              sh 'docker rm springboot-hystrix'
+              sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format '{{.ID}}')'
               sh 'docker build -t springboot-hystrix:1.0 .'
             }
          }
          stage('Deploy DockerImage') {
          agent any
              steps{
-               sh 'docker stop springboot-hystrix'
-               sh 'docker rm springboot-hystrix'
                sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --name springboot-hystrix springboot-hystrix:1.0'
              }
           }
