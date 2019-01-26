@@ -14,8 +14,7 @@ pipeline {
         }
         stage('Build DockerImage') {
             steps{
-              echo "build docker image"
-            sh 'docker build -t springboot-hystrix:1.0 .'
+              sh 'docker build -t springboot-hystrix:1.0 .'
             }
          }
          stage('Deploy DockerImage') {
