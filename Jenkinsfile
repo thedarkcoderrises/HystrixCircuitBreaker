@@ -20,6 +20,8 @@ pipeline {
          }
          stage('Deploy DockerImage') {
              steps{
+               sh 'docker stop springboot-hystrix'
+               sh 'docker rm springboot-hystrix'
                sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --name springboot-hystrix springboot-hystrix:1.0'
              }
           }
