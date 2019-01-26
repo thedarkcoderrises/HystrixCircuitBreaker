@@ -17,7 +17,7 @@ pipeline {
             steps{
               sh 'docker stop springboot-hystrix'
               sh 'docker rm springboot-hystrix'
-              sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format '{{.ID}}')'
+              sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format "{{.ID}}")'
               sh 'docker build -t springboot-hystrix:1.0 .'
             }
          }
