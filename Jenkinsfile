@@ -1,7 +1,7 @@
 pipeline {
     agent none
     stages {
-        stage('Build Artifact') {
+        stage('Build') {
         agent {
                 docker {
                     image 'maven:3-alpine'
@@ -21,7 +21,7 @@ pipeline {
               sh 'docker build -t springboot-hystrix:1.0 .'
             }
          }
-         stage('Deploy DockerImage') {
+         stage('Deployment') {
          agent any
              steps{
                sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --name springboot-hystrix springboot-hystrix:1.0'
