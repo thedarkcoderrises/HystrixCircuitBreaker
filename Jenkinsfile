@@ -14,7 +14,6 @@ pipeline {
         }
         stage('Build DockerImage') {
             steps{
-              #sh 'docker build -t springboot-hystrix:1.0.${BUILD_NUMBER} .'
               echo "build docker image"
             }
           }
