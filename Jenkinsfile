@@ -17,6 +17,11 @@ pipeline {
               echo "build docker image"
               sh 'docker build -t springboot-hystrix:1.0.${BUILD_NUMBER} .'
             }
+         }
+         stage('Deploy DockerImage') {
+             steps{
+               sh 'docker run -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --name springboot-hystrix springboot-hystrix:1.0.${BUILD_NUMBER}'
+             }
           }
     }
 }
