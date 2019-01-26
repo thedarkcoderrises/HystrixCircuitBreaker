@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Build DockerImage') {
             steps{
-              echo "build docker image"
+              sh 'whoami'
             }
           }
     }
