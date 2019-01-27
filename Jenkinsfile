@@ -18,7 +18,7 @@ pipeline {
             steps{
             script{
             containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
-            echo 'containerID = ${containerId}'
+            echo "containerID = ${containerId}"
                 if(${containerId}!= ''){
                       sh 'docker stop springboot-hystrix'
                       sh 'docker rm springboot-hystrix'
