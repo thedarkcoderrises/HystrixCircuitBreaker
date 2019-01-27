@@ -17,8 +17,10 @@ pipeline {
         agent any
             steps{
                 script{
-                    containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
-                    echo "class ${containerId.class}"
+                    containerId = sh (
+                    script :'docker ps -aqf "name=springboot-hystrix"',
+                    returnStdout: true
+                    ).trim()
                     echo "containerID = ${containerId}"
                         if(${containerId}!= ''){
                               sh 'docker stop springboot-hystrix'
