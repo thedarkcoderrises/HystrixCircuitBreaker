@@ -1,5 +1,4 @@
 def containerId=""
-binding.setProperty('containerId', containerId)
 pipeline {
     agent none
     stages {
@@ -19,6 +18,7 @@ pipeline {
             steps{
                 script{
                     containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
+                    echo "class $containerId.class"
                     echo "containerID = $containerId"
                         if($containerId!= ''){
                               sh 'docker stop springboot-hystrix'
