@@ -21,7 +21,6 @@ pipeline {
                     script :'docker ps -aqf "name=springboot-hystrix"',
                     returnStdout: true
                     ).trim()
-                    echo "containerID = "${containerId}""
                         if("${containerId}"!= ''){
                               sh 'docker stop springboot-hystrix'
                               sh 'docker rm springboot-hystrix'
