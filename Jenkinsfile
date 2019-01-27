@@ -18,8 +18,8 @@ pipeline {
             steps{
             script{
             containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
-            echo "containerID = ${containerId}"
-                if(${containerId}!= ''){
+            echo "containerID = $containerId"
+                if($containerId!= null){
                       sh 'docker stop springboot-hystrix'
                       sh 'docker rm springboot-hystrix'
                       sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format "{{.ID}}")'
