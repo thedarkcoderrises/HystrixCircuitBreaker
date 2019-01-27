@@ -34,11 +34,16 @@ pipeline {
          agent any
              steps{
                sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --name springboot-hystrix springboot-hystrix:1.0'
-               sh 'docker commit $(docker ps -aqf "name=springboot-hystrix") thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
-               sh 'docker login --username thedarkcoderrises --password Docker@123'
-               sh 'docker push thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
-               sh 'docker rmi $(docker images --filter=reference=thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER} --format "{{.ID}}")'
              }
           }
+          stage('Publish Image') {
+                   agent any
+                       steps{
+                         sh 'docker commit $(docker ps -aqf "name=springboot-hystrix") thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
+                         sh 'docker login --username thedarkcoderrises --password Docker@123'
+                         sh 'docker push thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
+                         sh 'docker rmi $(docker images --filter=reference=thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER} --format "{{.ID}}")'
+                       }
+                }
     }
 }
