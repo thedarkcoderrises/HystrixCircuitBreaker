@@ -1,4 +1,5 @@
 def containerId=""
+binding.setProperty('containerId', containerId)
 pipeline {
     agent none
     stages {
