@@ -18,9 +18,9 @@ pipeline {
             steps{
                 script{
                     containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
-                    echo "class $containerId.class"
-                    echo "containerID = $containerId"
-                        if($containerId!= ''){
+                    echo "class ${containerId.class}"
+                    echo "containerID = ${containerId}"
+                        if(${containerId}!= ''){
                               sh 'docker stop springboot-hystrix'
                               sh 'docker rm springboot-hystrix'
                               sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format "{{.ID}}")'
