@@ -1,4 +1,4 @@
-def containerId=''
+def containerId=""
 pipeline {
     agent none
     stages {
@@ -16,12 +16,14 @@ pipeline {
         stage('Build DockerImage') {
         agent any
             steps{
-            containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
-            echo "containerID = ${containerId}"
-                if(${containerId}!= ''){
-                      sh 'docker stop springboot-hystrix'
-                      sh 'docker rm springboot-hystrix'
-                      sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format "{{.ID}}")'
+                script{
+                    containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
+                    echo "containerID = $containerId"
+                        if($containerId!= ''){
+                              sh 'docker stop springboot-hystrix'
+                              sh 'docker rm springboot-hystrix'
+                              sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format "{{.ID}}")'
+                        }
                 }
                 sh 'docker build -t springboot-hystrix:1.0 .'
             }
