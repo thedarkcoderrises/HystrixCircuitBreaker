@@ -17,8 +17,8 @@ pipeline {
         agent any
             steps{
             containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
-            echo "containerID = $containerId"
-                if($containerId!= ''){
+            echo "containerID = ${containerId}"
+                if(${containerId}!= ''){
                       sh 'docker stop springboot-hystrix'
                       sh 'docker rm springboot-hystrix'
                       sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format "{{.ID}}")'
