@@ -12,8 +12,8 @@ pipeline {
                 sh 'mvn -X clean install -DskipTests'
             }
         }
-        def containerId
         stage('Build DockerImage') {
+        def containerId
         agent any
             steps{
             containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
