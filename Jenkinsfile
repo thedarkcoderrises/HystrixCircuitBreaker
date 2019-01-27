@@ -16,8 +16,8 @@ pipeline {
         stage('Build DockerImage') {
         agent any
             steps{
-            containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
             script{
+            containerId = sh 'docker ps -aqf "name=springboot-hystrix"'
                 if($(containerId)!= ''){
                       sh 'docker stop springboot-hystrix'
                       sh 'docker rm springboot-hystrix'
