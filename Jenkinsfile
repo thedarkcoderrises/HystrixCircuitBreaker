@@ -12,6 +12,7 @@ pipeline {
                 sh 'mvn -X clean install -DskipTests'
             }
         }
+        def containerId
         stage('Build DockerImage') {
         agent any
             steps{
