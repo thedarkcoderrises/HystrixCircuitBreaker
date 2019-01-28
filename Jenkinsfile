@@ -38,12 +38,11 @@ pipeline {
           }
           stage('Publish Image') {
                    agent any
-                       steps{
-                         sh 'docker commit $(docker ps -aqf "name=springboot-hystrix") thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
-                         sh 'docker login --username thedarkcoderrises --password Docker@123'
-                         sh 'docker push thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
-                         sh 'docker rmi $(docker images --filter=reference=thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER} --format "{{.ID}}")'
-                       }
+                   steps {
+                           withDockerRegistry([ credentialsId: "thedarkcoderrises-dockerhub", url: "" ]) {
+                             sh 'docker push thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
+                             sh 'docker rmi $(docker images --filter=reference=thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER} --format "{{.ID}}")'
+                           }
                 }
     }
 }
