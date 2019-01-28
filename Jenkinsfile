@@ -45,8 +45,8 @@ pipeline {
            steps {
                withDockerRegistry([ credentialsId: "thedarkcoderrises-dockerhub", url: "" ]) {
                  sh 'docker push thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
-                 sh 'docker rmi $(docker images --filter=reference=thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER} --format "{{.ID}}")'
                }
+                sh 'docker rmi $(docker images --filter=reference=thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER} --format "{{.ID}}")'
             }
         }
     }
