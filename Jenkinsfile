@@ -43,8 +43,9 @@ pipeline {
         stage('Publish Image') {
            agent any
            steps {
+                sh 'docker commit $(docker ps -aqf "name=springboot-hystrix") thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
                withDockerRegistry([ credentialsId: "thedarkcoderrises-dockerhub", url: "" ]) {
-                 sh 'docker push thedarkcoderrises/springboot-hystrix:1.0."${BUILD_NUMBER}"'
+                 sh 'docker push thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
                }
                 sh 'docker rmi $(docker images --filter=reference=thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER} --format "{{.ID}}")'
             }
