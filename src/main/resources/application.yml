@@ -1,0 +1,10 @@
+logging:
+  level:
+    root: ERROR
+    org.springframework.web: ERROR
+    com.circuitbreaker: DEBUG
+    org.hibernate: ERROR
+  file: logs/HystrixCB.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"

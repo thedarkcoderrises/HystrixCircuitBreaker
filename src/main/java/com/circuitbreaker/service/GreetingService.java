@@ -1,4 +1,4 @@
-package com.circuitbreaker.test.service;
+package com.circuitbreaker.service;
 
 public interface GreetingService {
     String greeting(String username);

@@ -1,6 +1,6 @@
-package com.circuitbreaker.test.service.impl;
+package com.circuitbreaker.service.impl;
 
-import com.circuitbreaker.test.service.GreetingService;
+import com.circuitbreaker.service.GreetingService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.stereotype.Service;
 
