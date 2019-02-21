@@ -37,8 +37,8 @@ pipeline {
             agent any
              steps {
                      sh 'docker --version'
-                     sh 'docker-compose --version'
-                     sh 'docker-compose up'
+                     sh '/usr/bin/docker-compose --version'
+                     sh '/usr/bin/docker-compose up'
                      sh 'pwd'
                 }
         }
