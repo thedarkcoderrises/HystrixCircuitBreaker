@@ -36,8 +36,6 @@ pipeline {
         stage('Deployment') {
             agent any
              steps {
-                    <!-- sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp
-                     --name springboot-hystrix springboot-hystrix:1.0' -->
                      sh 'docker-compose up'
                      sh 'pwd'
                 }
