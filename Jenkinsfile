@@ -36,6 +36,7 @@ pipeline {
         stage('Deployment') {
             agent any
              steps {
+                     sh 'echo $PATH'
                      sh 'docker --version'
                      sh '/usr/bin/docker-compose --version'
                      sh '/usr/bin/docker-compose up'
