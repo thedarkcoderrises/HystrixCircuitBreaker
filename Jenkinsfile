@@ -36,10 +36,11 @@ pipeline {
         stage('Deployment') {
             agent any
              steps {
+                     sh 'export PATH=$PATH:/usr/bin/docker-compose'
                      sh 'echo $PATH'
                      sh 'docker --version'
-                     sh '/usr/bin/docker-compose --version'
-                     sh '/usr/bin/docker-compose up'
+                     sh 'docker-compose --version'
+                     sh 'docker-compose up'
                      sh 'pwd'
                 }
         }
