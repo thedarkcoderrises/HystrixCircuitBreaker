@@ -35,9 +35,9 @@ pipeline {
         stage('Deployment') {
             agent any
              steps {
-                     containerId = sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --log-driver json-file --log-opt max-size=20k --log-opt max-file=3 --name springboot-hystrix springboot-hystrix:1.0'
-                     sh 'echo "${containerId}"'
-                     sh 'docker logs ${containerId} >/tmp/hystrix.log'
+                     sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --log-driver json-file --log-opt max-size=20k --log-opt max-file=3 --name springboot-hystrix springboot-hystrix:1.0'
+                     sh 'docker ps -aqf "name=springboot-hystrix"'
+                     sh 'docker logs (docker ps -aqf "name=springboot-hystrix") >/tmp/hystrix.log'
                 }
         }
 
