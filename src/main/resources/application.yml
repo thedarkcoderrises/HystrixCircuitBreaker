@@ -2,7 +2,7 @@ logging:
   level:
     root: ERROR
     org.springframework.web: ERROR
-    com.circuitbreaker: INFO
+    com.circuitbreaker: DEBUG
     org.hibernate: ERROR
   file: logs/HystrixCB.log
   pattern:

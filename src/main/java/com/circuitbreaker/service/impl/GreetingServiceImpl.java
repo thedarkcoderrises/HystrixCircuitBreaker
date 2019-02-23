@@ -16,9 +16,9 @@ public class GreetingServiceImpl implements GreetingService {
         if("cb".equalsIgnoreCase(username)){
             throw new NullPointerException();
         }
-        String info = String.format("Hello %s Welcome to Docker CI\\CD!", username.toUpperCase());
-        LOG.info(info);
-        return info;
+        String temp = String.format("Hello %s Welcome to Docker CI\\CD!", username.toUpperCase());
+        LOG.info(temp);
+        return temp;
     }
 
     private String defaultGreeting(String username) {
