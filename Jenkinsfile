@@ -41,7 +41,7 @@ pipeline {
                                             returnStdout: true
                                          ).trim()
                      }
-                     sh 'docker logs ${containerId} > /home/ec2-user/myDocker/springboot-hystrix/localmount/logs/hystrix.log'
+                     sh 'docker logs ${containerId} > /tmp/logs/hystrix.log'
                 }
         }
 
