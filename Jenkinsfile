@@ -32,17 +32,10 @@ pipeline {
                     sh 'docker build -t springboot-hystrix:1.0 .'
                 }
          }
-         stage('Install DockerCompose') {
-                     agent any
-                     steps{
-                             sh '/usr/local/bin/docker-compose -version'
-                         }
-                  }
-
         stage('Deployment') {
             agent any
              steps {
-                     sh 'docker-compose up'
+                     sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --log-driver json-file --log-opt max-size=20k --log-opt max-file=3 --name springboot-hystrix springboot-hystrix:1.0'
                 }
         }
 
