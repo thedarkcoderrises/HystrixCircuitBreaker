@@ -41,9 +41,6 @@ pipeline {
                                             returnStdout: true
                                          ).trim()
                      }
-                     if(! -d "/tmp/logs"){
-                        sh 'mkdir /tmp/logs'
-                     }
                      sh 'echo ${containerId}'
                      sh 'docker logs ${containerId} >/tmp/hystrix.log'
                 }
