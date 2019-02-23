@@ -24,6 +24,7 @@ pipeline {
                         returnStdout: true
                         ).trim()
                             if("${containerId}"!= ''){
+                                  sh 'echo "${containerId}"'
                                   sh 'docker stop springboot-hystrix'
                                   sh 'docker rm springboot-hystrix'
                                   sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format "{{.ID}}")'
