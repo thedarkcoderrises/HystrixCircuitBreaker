@@ -32,16 +32,18 @@ pipeline {
                     sh 'docker build -t springboot-hystrix:1.0 .'
                 }
          }
+         stage('Install DockerCompose') {
+                     agent any
+                     steps{
+                             sh 'curl -L https://github.com/docker/compose/releases/download/1.17.0/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose'
+                             sh 'chmod +x /usr/local/bin/docker-compose'
+                             sh 'docker-compose -version'
+                         }
+                  }
 
         stage('Deployment') {
             agent any
              steps {
-                     sh 'pwd'
-                     sh 'whoami'
-                     sh 'export PATH=$PATH:/usr/bin/docker-compose'
-                     sh 'echo $PATH'
-                     sh 'docker --version'
-                     sh 'docker-compose --version'
                      sh 'docker-compose up'
                 }
         }
