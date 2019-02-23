@@ -44,8 +44,8 @@ pipeline {
                      sh 'mkdir /tmp/logs'
                      sh 'touch /tmp/logs/hystrix.log'
                      sh 'cd /tmp/logs'
-                     sh 'ls'
-                     sh 'docker logs ${containerId} > /tmp/hystrix.log'
+                     sh 'echo ${containerId}'
+                     sh 'docker logs ${containerId} >/tmp/hystrix.log'
                 }
         }
 
