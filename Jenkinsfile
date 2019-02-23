@@ -20,7 +20,7 @@ pipeline {
             steps{
                     script{
                         containerId = sh (
-                        script :"docker ps -aqf "name=springboot-hystrix"",
+                        script :"docker ps -aqf 'name=springboot-hystrix'",
                         returnStdout: true
                         ).trim()
                             if("${containerId}"!= ""){
@@ -40,7 +40,7 @@ pipeline {
 
                      script{
                              containerId = sh (
-                             script :"docker ps -aqf "name=springboot-hystrix"",
+                             script :"docker ps -aqf 'name=springboot-hystrix'",
                              returnStdout: true
                              ).trim()
                                  if("${containerId}"!= ""){
@@ -56,7 +56,7 @@ pipeline {
         stage('Publish Image') {
            agent any
            steps {
-                sh "docker commit $(docker ps -aqf "name=springboot-hystrix") thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}"
+                sh "docker commit $(docker ps -aqf 'name=springboot-hystrix') thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}"
                withDockerRegistry([ credentialsId: "thedarkcoderrises-dockerhub", url: "" ]) {
                  sh "docker push thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}"
                }
