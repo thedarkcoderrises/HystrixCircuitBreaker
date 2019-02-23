@@ -41,7 +41,7 @@ pipeline {
                                             returnStdout: true
                                          ).trim()
                      }
-                     sh 'echo ${containerId}'
+                     sh 'echo "${containerId}"'
                      sh 'docker logs ${containerId} >/tmp/hystrix.log'
                 }
         }
