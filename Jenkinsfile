@@ -41,9 +41,9 @@ pipeline {
                                             returnStdout: true
                                          ).trim()
                      }
-                     sh 'mkdir /tmp/logs'
-                     sh 'touch /tmp/logs/hystrix.log'
-                     sh 'cd /tmp/logs'
+                     if(!fileExists("/tmp/logs")){
+                        sh 'mkdir /tmp/logs'
+                     }
                      sh 'echo ${containerId}'
                      sh 'docker logs ${containerId} >/tmp/hystrix.log'
                 }
