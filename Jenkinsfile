@@ -45,7 +45,7 @@ pipeline {
                              if("${containerId}"!= ""){
                                sh 'rm -rf /tmp/logs'
                                sh 'mkdir /tmp/logs'
-                               sh 'docker logs ${containerId} >/tmp/logs/hystrix.log'
+                               sh 'docker logs $(docker ps -aqf "name=springboot-hystrix") >/tmp/logs/hystrix.log'
                              }
                          }
                 }
