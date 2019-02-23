@@ -41,7 +41,7 @@ pipeline {
                                             returnStdout: true
                                          ).trim()
                      }
-                     if(!fileExists("/tmp/logs")){
+                     if(! -d "/tmp/logs"){
                         sh 'mkdir /tmp/logs'
                      }
                      sh 'echo ${containerId}'
