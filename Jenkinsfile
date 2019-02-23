@@ -23,6 +23,7 @@ pipeline {
                         script :'docker ps -aqf "name=springboot-hystrix"',
                         returnStdout: true
                         ).trim()
+                        println containerId
                             if("${containerId}"!= ""){
                                   sh 'echo "${containerId}"'
                                   sh 'docker stop springboot-hystrix'
@@ -37,8 +38,6 @@ pipeline {
             agent any
              steps {
                      sh 'docker run -d -p 8081:8080 -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --log-driver json-file --log-opt max-size=20k --log-opt max-file=3 --name springboot-hystrix springboot-hystrix:1.0'
-                     containerId = sh 'docker ps -aqf "name=springboot-hystrix"'.trim()
-                     println containerId
                 }
         }
 
