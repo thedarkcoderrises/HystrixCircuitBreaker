@@ -36,12 +36,13 @@ pipeline {
         stage('Deployment') {
             agent any
              steps {
+                     sh 'pwd'
+                     sh 'whoami'
                      sh 'export PATH=$PATH:/usr/bin/docker-compose'
                      sh 'echo $PATH'
                      sh 'docker --version'
                      sh 'docker-compose --version'
                      sh 'docker-compose up'
-                     sh 'pwd'
                 }
         }
 
