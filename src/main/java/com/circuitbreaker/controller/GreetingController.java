@@ -1,6 +1,5 @@
 package com.circuitbreaker.controller;
 
-import com.circuitbreaker.App;
 import com.circuitbreaker.service.GreetingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,14 +15,11 @@ public class GreetingController {
     @Autowired
     GreetingService greetSvc;
 
-    private static Logger LOG = LoggerFactory.getLogger(App.class);
+    private static Logger LOG = LoggerFactory.getLogger(GreetingController.class);
 
     @RequestMapping("/greeting/{username}")
   public  String greeting(@PathVariable("username") String username){
-
-        LOG.warn("WARN");
-        LOG.info("INFO");
-        LOG.debug("DEBUG");
+        LOG.info("Greeting incoming user: {}",username);
         return greetSvc.greeting(username);
     }
 }
