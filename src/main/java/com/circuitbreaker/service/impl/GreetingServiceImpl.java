@@ -13,7 +13,7 @@ public class GreetingServiceImpl implements GreetingService {
     @Override
     @HystrixCommand(fallbackMethod = "defaultGreeting")
     public String greeting(String username) {
-        if("cb".equalsIgnoreCase(username)){
+        if(username.startsWith("cb")){
             throw new NullPointerException();
         }
         String temp = String.format("Hello %s Welcome to Docker CI\\CD!", username.toUpperCase());
@@ -22,7 +22,6 @@ public class GreetingServiceImpl implements GreetingService {
     }
 
     private String defaultGreeting(String username) {
-        if(username.startsWith("cb"))
         LOG.info("Hystrix fallBackMethod executed! for invalid user: {}",username);
         return "Invalid User!!";
     }
