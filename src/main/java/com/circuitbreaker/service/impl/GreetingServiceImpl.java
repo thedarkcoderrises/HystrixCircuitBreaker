@@ -22,6 +22,7 @@ public class GreetingServiceImpl implements GreetingService {
     }
 
     private String defaultGreeting(String username) {
+        if(username.startsWith("cb"))
         LOG.info("Hystrix fallBackMethod executed! for invalid user: {}",username);
         return "Invalid User!!";
     }
