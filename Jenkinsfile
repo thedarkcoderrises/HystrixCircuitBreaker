@@ -36,8 +36,8 @@ pipeline {
         stage('Deployment') {
              steps {
                      sh 'echo $PATH'
-                     sh 'docker-compose -version'
-                     sh 'docker-compose up'
+                     sh '/usr/local/bin/docker-compose -version'
+                     sh '/usr/local/bin/docker-compose up'
                    }
            }
         stage('Publish Image') {
