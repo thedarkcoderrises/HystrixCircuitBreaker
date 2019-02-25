@@ -1,9 +1,7 @@
 def containerId=""
 pipeline {
-    agent any
-    environment {
-            PATH = "$PATH:/usr/local/bin"
-    }
+    agent none
+
     stages {
         stage('Build') {
             agent {
@@ -18,6 +16,7 @@ pipeline {
             }
 
         stage('Build DockerImage') {
+            agent any
             steps{
                     script{
                         containerId = sh (
@@ -34,13 +33,17 @@ pipeline {
                 }
          }
         stage('Deployment') {
+            agent any
+            environment {
+                        PATH = "$PATH:/usr/local/bin"
+                }
              steps {
-                     sh 'echo $PATH'
-                     sh '/usr/local/bin/docker-compose -version'
-                     sh '/usr/local/bin/docker-compose up'
+                     sh 'docker-compose -version'
+                     sh 'docker-compose up'
                    }
            }
         stage('Publish Image') {
+           agent any
            steps {
                 sh 'docker commit $(docker ps -aqf "name=springboot-hystrix") thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
                withDockerRegistry([ credentialsId: "thedarkcoderrises-dockerhub", url: "" ]) {
