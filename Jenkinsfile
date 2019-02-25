@@ -17,6 +17,9 @@ pipeline {
 
         stage('Build DockerImage') {
             agent any
+            environment {
+                                    PATH = "$PATH:/usr/local/bin/docker-compose"
+                            }
             steps{
                     script{
                         containerId = sh (
@@ -31,6 +34,8 @@ pipeline {
                     }
                     sh 'docker build -t springboot-hystrix:1.0 .'
                     sh 'echo $PATH'
+                    sh 'docker-compose -version'
+
                 }
          }
         stage('Deployment') {
