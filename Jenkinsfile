@@ -30,6 +30,8 @@ pipeline {
                         }
                     }
                     sh 'docker build -t springboot-hystrix:1.0 .'
+                    sh 'echo $PATH'
+                    sh 'docker-compose -version'
                 }
          }
         stage('Deployment') {
@@ -38,6 +40,7 @@ pipeline {
                         PATH = "$PATH:/usr/local/bin"
                 }
              steps {
+                     sh 'echo $PATH'
                      sh 'docker-compose -version'
                      sh 'docker-compose up'
                    }
