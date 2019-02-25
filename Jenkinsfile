@@ -31,7 +31,6 @@ pipeline {
                     }
                     sh 'docker build -t springboot-hystrix:1.0 .'
                     sh 'echo $PATH'
-                    sh 'docker-compose -version'
                 }
          }
         stage('Deployment') {
