@@ -1,6 +1,6 @@
 def containerId=""
 pipeline {
-    agent none
+    agent any
     environment {
             PATH = "$PATH:/usr/local/bin"
     }
