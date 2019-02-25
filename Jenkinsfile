@@ -34,6 +34,9 @@ pipeline {
          }
         stage('Deployment') {
             agent any
+            environment {
+                        PATH = "$PATH:/usr/local/bin"
+                }
              steps {
                      sh 'docker-compose -version'
                      sh 'docker-compose up'
