@@ -1,8 +1,10 @@
 def containerId=""
 pipeline {
     agent none
+    environment {
+            PATH = "$PATH:/usr/local/bin"
+    }
     stages {
-
         stage('Build') {
             agent {
                     docker {
@@ -35,7 +37,8 @@ pipeline {
         stage('Deployment') {
             agent any
              steps {
-                     sh 'docker run -d -p 8081:8080 -ti -v /home/ec2-user/myDocker/logs:/logs -v /home/ec2-user/myDocker/springboot-hystrix/localmount:/tmp --log-driver json-file --log-opt max-size=20k --log-opt max-file=3 --name springboot-hystrix springboot-hystrix:1.0'
+                     sh 'docker-compose -version'
+                     sh 'docker-compose up'
                    }
            }
         stage('Publish Image') {
