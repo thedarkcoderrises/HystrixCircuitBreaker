@@ -35,7 +35,7 @@ pipeline {
         stage('Deployment') {
             agent any
              steps {
-                     sh 'docker-compose -version'
+                     sh 'pwd'
                    }
            }
         stage('Publish Image') {
