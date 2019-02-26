@@ -34,6 +34,7 @@ pipeline {
              steps {
                      sh 'pwd'
                      sh 'ls -ltr'
+                     sh 'docker-compose -version'
                      sh 'docker-compose up'
                    }
            }
