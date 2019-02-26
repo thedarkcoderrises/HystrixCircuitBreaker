@@ -38,7 +38,8 @@ pipeline {
                      sh 'echo $PATH'
                      sh 'chmod 777 /usr/local/bin/docker-compose'
                      sh 'ls -ltr /usr/local/bin/docker-compose'
-                     sh '/usr/local/bin/docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit'
+                     sh 'ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose'
+                     sh 'docker-compose up'
                    }
            }
         stage('Publish Image') {
