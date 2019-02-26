@@ -17,9 +17,6 @@ pipeline {
 
         stage('Build DockerImage') {
             agent any
-            environment {
-                                    PATH = "$PATH:/usr/local/bin/docker-compose"
-                            }
             steps{
                     script{
                         containerId = sh (
@@ -33,20 +30,16 @@ pipeline {
                         }
                     }
                     sh 'docker build -t springboot-hystrix:1.0 .'
-                    sh 'echo $PATH'
-                    sh 'docker-compose -version'
-
                 }
          }
         stage('Deployment') {
             agent any
             environment {
-                        PATH = "$PATH:/usr/local/bin/docker-compose"
+                    PATH = "$PATH:/usr/local/bin/docker-compose"
                 }
              steps {
                      sh 'echo $PATH'
-                     sh 'docker-compose -version'
-                     sh 'docker-compose up'
+                     sh '/usr/local/bin/docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit'
                    }
            }
         stage('Publish Image') {
