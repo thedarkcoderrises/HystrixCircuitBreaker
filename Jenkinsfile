@@ -35,11 +35,7 @@ pipeline {
         stage('Deployment') {
             agent any
              steps {
-                     sh 'echo $PATH'
-                     sh 'ls -ltr /usr/local/bin/docker-compose'
-                     sh 'rm -rf /usr/local/bin/docker-compose'
-                     sh 'ls -ltr /usr/local/bin/docker-compose'
-                     sh 'docker-compose up'
+                     sh 'docker-compose -version'
                    }
            }
         stage('Publish Image') {
