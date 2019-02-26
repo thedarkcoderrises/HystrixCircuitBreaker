@@ -35,7 +35,7 @@ pipeline {
                      sh 'pwd'
                      sh 'ls -ltr'
                      sh 'docker-compose -version'
-                     sh 'docker-compose up'
+                     sh 'docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit''
                    }
            }
         stage('Publish Image') {
