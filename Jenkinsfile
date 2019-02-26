@@ -36,6 +36,7 @@ pipeline {
             agent any
              steps {
                      sh 'pwd'
+                     sh 'ls -ltr'
                    }
            }
         stage('Publish Image') {
