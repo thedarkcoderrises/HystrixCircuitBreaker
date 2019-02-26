@@ -1,7 +1,6 @@
 def containerId=""
 pipeline {
-    agent none
-
+    agent any
     stages {
         stage('Build') {
             agent {
@@ -16,7 +15,6 @@ pipeline {
             }
 
         stage('Build DockerImage') {
-            agent any
             steps{
                     script{
                         containerId = sh (
@@ -33,14 +31,11 @@ pipeline {
                 }
          }
         stage('Deployment') {
-            agent any
              steps {
-                     sh 'pwd'
-                     sh 'ls -ltr'
+                     sh 'docker-compose -version'
                    }
            }
         stage('Publish Image') {
-           agent any
            steps {
                 sh 'docker commit $(docker ps -aqf "name=springboot-hystrix") thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
                withDockerRegistry([ credentialsId: "thedarkcoderrises-dockerhub", url: "" ]) {
