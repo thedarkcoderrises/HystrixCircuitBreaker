@@ -32,6 +32,8 @@ pipeline {
          }
         stage('Deployment') {
              steps {
+                     sh 'pwd'
+                     sh 'ls -ltr'
                      sh 'docker-compose up'
                    }
            }
