@@ -39,6 +39,7 @@ pipeline {
                 }
              steps {
                      sh 'echo $PATH'
+                     sh 'ls -ltr /usr/local/bin/docker-compose'
                      sh '/usr/local/bin/docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit'
                    }
            }
