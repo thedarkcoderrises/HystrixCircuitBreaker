@@ -36,9 +36,9 @@ pipeline {
             agent any
              steps {
                      sh 'echo $PATH'
-                     sh 'chmod 777 /usr/local/bin/docker-compose'
                      sh 'ls -ltr /usr/local/bin/docker-compose'
-                     sh 'ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose'
+                     sh 'rm -rf /usr/local/bin/docker-compose'
+                     sh 'ls -ltr /usr/local/bin/docker-compose'
                      sh 'docker-compose up'
                    }
            }
