@@ -32,7 +32,7 @@ pipeline {
          }
         stage('Deployment') {
              steps {
-                     sh 'docker-compose -version'
+                     sh 'docker-compose up'
                    }
            }
         stage('Publish Image') {
