@@ -1,4 +1,3 @@
-version: '3'
 services:
   springboot-hystrix:
     image: springboot-hystrix:1.0
