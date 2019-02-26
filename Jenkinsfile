@@ -34,11 +34,9 @@ pipeline {
          }
         stage('Deployment') {
             agent any
-            environment {
-                    PATH = "$PATH:/usr/local/bin/docker-compose"
-                }
              steps {
                      sh 'echo $PATH'
+                     sh 'chmod 777 /usr/local/bin/docker-compose'
                      sh 'ls -ltr /usr/local/bin/docker-compose'
                      sh '/usr/local/bin/docker-compose -f docker-compose.yml up --force-recreate --abort-on-container-exit'
                    }
