@@ -15,6 +15,7 @@ pipeline {
             }
 
         stage('Build DockerImage') {
+            agent any
             steps{
                     script{
                         containerId = sh (
@@ -31,19 +32,11 @@ pipeline {
                 }
          }
         stage('Deployment') {
+        agent any
              steps {
                      sh 'docker-compose -version'
                      sh 'docker-compose up'
                    }
            }
-        stage('Publish Image') {
-           steps {
-                sh 'docker commit $(docker ps -aqf "name=springboot-hystrix") thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
-               withDockerRegistry([ credentialsId: "thedarkcoderrises-dockerhub", url: "" ]) {
-                 sh 'docker push thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
-               }
-                sh 'docker rmi $(docker images --filter=reference=thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER} --format "{{.ID}}")'
-            }
-        }
     }
  }
