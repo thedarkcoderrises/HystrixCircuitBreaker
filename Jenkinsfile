@@ -32,7 +32,7 @@ pipeline {
          }
         stage('Deployment') {
              steps {
-                     sh 'pwd'
+                     sh '${PWD}'
                      sh 'ls -ltr'
                      sh 'docker-compose -version'
                      sh 'docker-compose -f ${PWD}/docker-compose.yml up --force-recreate --abort-on-container-exit'
