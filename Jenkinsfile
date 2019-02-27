@@ -39,6 +39,7 @@ pipeline {
                    }
            }
         stage('Publish Image') {
+        agent any
            steps {
                 sh 'docker commit $(docker ps -aqf "name=springboot-hystrix") thedarkcoderrises/springboot-hystrix:1.0.${BUILD_NUMBER}'
                withDockerRegistry([ credentialsId: "thedarkcoderrises-dockerhub", url: "" ]) {
