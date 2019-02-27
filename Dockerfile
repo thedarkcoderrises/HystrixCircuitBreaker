@@ -1,7 +1,5 @@
 #getting base image
 FROM java:8
-ENV DIRPATH /tmp/HystrixWS
-WORKDIR $DIRPATH
 VOLUME /tmp
 ADD target/HystrixCB-1.0-SNAPSHOT.jar app.jar
 EXPOSE 8080

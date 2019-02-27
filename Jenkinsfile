@@ -32,7 +32,6 @@ pipeline {
          }
         stage('Deployment') {
              steps {
-                     sh 'cd /tmp/HystrixWS'
                      sh 'docker-compose -version'
                      sh 'docker-compose up'
                    }
