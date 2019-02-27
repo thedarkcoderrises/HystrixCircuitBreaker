@@ -32,8 +32,9 @@ pipeline {
          }
         stage('Deployment') {
              steps {
-                     sh '${PWD}'
                      sh 'ls -ltr'
+                     sh 'whoami'
+                     sh 'chmod 777 ./*'
                      sh 'docker-compose -version'
                      sh 'docker-compose -f ${PWD}/docker-compose.yml up --force-recreate --abort-on-container-exit'
                    }
