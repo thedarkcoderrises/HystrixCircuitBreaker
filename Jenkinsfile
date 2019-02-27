@@ -33,12 +33,11 @@ pipeline {
         stage('Deployment') {
              steps {
                      sh 'rm -f ./docker-compose.yml'
-                     sh 'cp ./dockercompose.yml ./docker-compose.yml'
                      sh 'whoami'
                      sh 'chmod 777 ./*'
                      sh 'ls -ltr'
                      sh 'docker-compose -version'
-                     sh 'docker-compose -f ${PWD}/docker-compose.yml up --force-recreate --abort-on-container-exit'
+                     sh 'docker-compose -f ${PWD}/dockercompose.yml up'
                    }
            }
         stage('Publish Image') {
