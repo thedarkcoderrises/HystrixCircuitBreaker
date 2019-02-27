@@ -1,6 +1,6 @@
 def containerId=""
 pipeline {
-    agent any
+    agent none
     stages {
         stage('Build') {
             agent {
