@@ -36,7 +36,7 @@ pipeline {
                      sh 'chmod 777 ./*'
                      sh 'ls -ltr'
                      sh 'docker-compose -version'
-                     sh 'docker-compose up'
+                     sh 'docker-compose -f ${PWD}/docker-compose.yml up'
                    }
            }
         stage('Publish Image') {
