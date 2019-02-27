@@ -32,12 +32,11 @@ pipeline {
          }
         stage('Deployment') {
              steps {
-                     sh 'rm -f ./docker-compose.yml'
                      sh 'whoami'
                      sh 'chmod 777 ./*'
                      sh 'ls -ltr'
                      sh 'docker-compose -version'
-                     sh 'docker-compose -f ${PWD}/dockercompose.yml up'
+                     sh 'docker-compose up'
                    }
            }
         stage('Publish Image') {
