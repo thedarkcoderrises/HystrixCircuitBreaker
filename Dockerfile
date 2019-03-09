@@ -3,6 +3,7 @@ FROM java:8
 VOLUME /tmp
 ADD target/HystrixCB-1.0-SNAPSHOT.jar app.jar
 EXPOSE 8080
+EXPOSE 443
 COPY ./ssl/ssl-cert.crt /usr/local/share/ca-certificates/ssl-cert.crt
 RUN update-ca-certificates
 RUN pwd
