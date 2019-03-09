@@ -41,9 +41,9 @@ EOF
 FILE_NAME="ssl-cert"
 
 # Remove previous keys
-#echo "Removing existing certs like $FILE_NAME.*"
-#chmod 770 $FILE_NAME.*
-#rm $FILE_NAME.*
+echo "Removing existing certs like $FILE_NAME.*"
+chmod 770 $FILE_NAME.*
+rm $FILE_NAME.*
 
 echo "Generating certs for $BASE_DOMAIN"
 
