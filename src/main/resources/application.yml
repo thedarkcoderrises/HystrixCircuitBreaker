@@ -1,10 +1,25 @@
-logging:
-  level:
-    root: ERROR
-    org.springframework.web: ERROR
-    com.circuitbreaker: DEBUG
-    org.hibernate: ERROR
-  file: logs/HystrixCB.log
-  pattern:
-    console:
-    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#logging:
+#  level:
+#    root: ERROR
+#    org.springframework.web: DEBUG
+#    com.circuitbreaker: DEBUG
+#  file: logs/HystrixCB.log
+#  pattern:
+#    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+#    file:
+
+
+# The format used for the keystore. It could be set to JKS in case it is a JKS file
+# The path to the keystore containing the certificate
+# The password used to generate the certificate
+# The alias mapped to the certificate
+server.ssl:
+  key-store-type: JKS
+  key-store: classpath:keystore/https-cert.jks
+  key-store-password: changeit
+  key-password: changeit
+  enabled: true
+
+
+server.port: 8443
+http.port: 8081
