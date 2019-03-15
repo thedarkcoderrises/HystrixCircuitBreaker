@@ -19,16 +19,16 @@ pipeline {
             steps{
                     script{
                         containerId = sh (
-                        script :'docker ps -aqf "name=springboot-hystrix"',
+                        script :'docker ps -aqf "name=hystrix"',
                         returnStdout: true
                         ).trim()
                         if("${containerId}"!= ""){
-                          sh 'docker stop springboot-hystrix'
-                          sh 'docker rm springboot-hystrix'
-                          sh 'docker rmi $(docker images --filter=reference=springboot-hystrix --format "{{.ID}}")'
+                          sh 'docker stop hystrix'
+                          sh 'docker rm hystrix'
+                          sh 'docker rmi $(docker images --filter=reference=hystrix --format "{{.ID}}")'
                         }
                     }
-                    sh 'docker build -t springboot-hystrix:1.0 .'
+                    sh 'docker build -t hystrix:1.0 .'
                 }
          }
         stage('Deployment') {
