@@ -20,7 +20,7 @@ public class AppConfig {
     @Value("${http.port}")
     private int httpPort;
 
-    @Value("${server.port}")
+    @Value("${https.port}")
     private int httpsPort;
 
     private static Logger LOG = LoggerFactory.getLogger(AppConfig.class);

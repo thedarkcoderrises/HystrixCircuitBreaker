@@ -20,5 +20,5 @@ server.ssl:
   key-password: changeit
   enabled: true
 
-#server.port: 8443
-#http.port: 8081
+https.port: ${https_port}
+http.port: ${http_port}
