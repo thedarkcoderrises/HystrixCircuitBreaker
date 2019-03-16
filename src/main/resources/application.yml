@@ -21,4 +21,4 @@ server.ssl:
   enabled: true
 
 #server.port: 8443
-#http.port: 8081
+#http.port: 8080
