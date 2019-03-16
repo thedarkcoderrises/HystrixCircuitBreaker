@@ -22,4 +22,10 @@ public class GreetingController {
         LOG.info("Greeting incoming user: {}",username);
         return greetSvc.greeting(username);
     }
+
+    @RequestMapping("/greet")
+    public  String greet(){
+        LOG.info("Greetings to all!");
+        return greetSvc.greeting("TDCR");
+    }
 }
