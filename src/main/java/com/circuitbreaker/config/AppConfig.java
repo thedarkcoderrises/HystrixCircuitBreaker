@@ -9,44 +9,44 @@ import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletCon
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 public class AppConfig {
-//
-//
-//    @Value("${http.port}")
-//    private int httpPort;
-//
-//    @Value("${server.port}")
-//    private int httpsPort;
-//
-//
-//
-//    @Bean
-//   public TomcatEmbeddedServletContainerFactory containerFactory (){
-//        TomcatEmbeddedServletContainerFactory containerFactory = new TomcatEmbeddedServletContainerFactory(){
-//            @Override
-//            protected void postProcessContext(Context context) {
-//                SecurityConstraint securityConstraint = new SecurityConstraint();
-//                securityConstraint.setUserConstraint("CONFIDENTIAL");
-//                SecurityCollection collection = new SecurityCollection();
-//                collection.addPattern("/*");
-//                securityConstraint.addCollection(collection);
-//                context.addConstraint(securityConstraint);
-//            }
-//        };
-//        containerFactory.addAdditionalTomcatConnectors(createConnection());
-//
-//        return containerFactory;
-//    }
-//
-//    private Connector createConnection() {
-//        final String protocol = "org.apache.coyote.http11.Http11NioProtocol";
-//        final Connector connector = new Connector(protocol);
-//        connector.setScheme("http");
-//        connector.setPort(httpPort);
-//        connector.setRedirectPort(httpsPort);
-//        return connector;
-//    }
+
+
+    @Value("${http.port}")
+    private int httpPort;
+
+    @Value("${server.port}")
+    private int httpsPort;
+
+
+
+    @Bean
+   public TomcatEmbeddedServletContainerFactory containerFactory (){
+        TomcatEmbeddedServletContainerFactory containerFactory = new TomcatEmbeddedServletContainerFactory(){
+            @Override
+            protected void postProcessContext(Context context) {
+                SecurityConstraint securityConstraint = new SecurityConstraint();
+                securityConstraint.setUserConstraint("CONFIDENTIAL");
+                SecurityCollection collection = new SecurityCollection();
+                collection.addPattern("/*");
+                securityConstraint.addCollection(collection);
+                context.addConstraint(securityConstraint);
+            }
+        };
+        containerFactory.addAdditionalTomcatConnectors(createConnection());
+
+        return containerFactory;
+    }
+
+    private Connector createConnection() {
+        final String protocol = "org.apache.coyote.http11.Http11NioProtocol";
+        final Connector connector = new Connector(protocol);
+        connector.setScheme("http");
+        connector.setPort(httpPort);
+        connector.setRedirectPort(httpsPort);
+        return connector;
+    }
 
 
 }
