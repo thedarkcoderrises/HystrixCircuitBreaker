@@ -15,12 +15,12 @@ import org.springframework.util.StringUtils;
 //@Configuration
 public class AppConfig {
 
-
+//
 //    @Value("${http.port}")
 //    private int httpPort;
 //
-//    @Value("${https.port}")
-//    private int httpsPort=8443;
+//    @Value("${server.port}")
+//    private int httpsPort;
 //
 //    private static Logger LOG = LoggerFactory.getLogger(AppConfig.class);
 //
