@@ -5,7 +5,7 @@ logging:
     com.circuitbreaker: DEBUG
   file: logs/HystrixCB.log
   pattern:
-    console:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
     file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 
 
@@ -20,5 +20,5 @@ server.ssl:
   key-password: changeit
   enabled: true
 
-#https.port: ${https_port}
+#server.port: ${https_port}
 #http.port: ${http_port}
