@@ -13,12 +13,12 @@ logging:
 # The path to the keystore containing the certificate
 # The password used to generate the certificate
 # The alias mapped to the certificate
-server.ssl:
-  key-store-type: JKS
-  key-store: classpath:keystore/ssl-cert.jks
-  key-store-password: changeit
-  key-password: changeit
-  enabled: true
+#server.ssl:
+#  key-store-type: JKS
+#  key-store: classpath:keystore/ssl-cert.jks
+#  key-store-password: changeit
+#  key-password: changeit
+#  enabled: true
 
 #https.port: ${https_port}
 #http.port: ${http_port}
