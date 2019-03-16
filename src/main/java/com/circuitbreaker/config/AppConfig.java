@@ -19,8 +19,8 @@ public class AppConfig {
     @Value("${http.port}")
     private int httpPort;
 
-    @Value("${https.port}")
-    private int httpsPort;
+//    @Value("${https.port}")
+    private int httpsPort=8443;
 
     private static Logger LOG = LoggerFactory.getLogger(AppConfig.class);
 
@@ -56,7 +56,7 @@ public class AppConfig {
         if (StringUtils.isEmpty(httpPort) || StringUtils.isEmpty(httpsPort))
             throw new Exception("Inavlid port");
         else
-            LOG.info("http.pory: {}, https.port: {}",httpPort,httpsPort);
+            LOG.info("http.port: {}, https.port: {}",httpPort,httpsPort);
     }
 
 
