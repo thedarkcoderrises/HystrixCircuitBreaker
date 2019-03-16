@@ -2,8 +2,8 @@
 FROM java:8
 VOLUME /tmp
 ADD target/HystrixCB-1.0-SNAPSHOT.jar app.jar
-EXPOSE 80
-EXPOSE 443
+EXPOSE 8080
+EXPOSE 8443
 #COPY ./ssl/generate-ssl.sh /usr/local/share/ca-certificates/generate-ssl.sh
 #RUN chmod +x /usr/local/share/ca-certificates/generate-ssl.sh
 #RUN cd /usr/local/share/ca-certificates && sh ./generate-ssl.sh
