@@ -25,7 +25,7 @@ pipeline {
                         if("${containerId}"!= ""){
                           sh 'docker stop hystrix'
                           sh 'docker rm hystrix'
-                          sh 'docker rmi $(docker images --filter=reference=hystrix --format "{{.ID}}")'
+                          sh 'docker rmi $(docker images --filter=reference=hystrix* --format "{{.ID}}")'
                         }
                     }
                     sh 'docker build -t hystrix:1.0 .'
