@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Nginx-Docker</title>
+</head>
+<body>
+Nginx : Hello world!
+
+
+location /app1 {
+proxy_pass http://hystrix1:8082;
+}
+
+location /app2 {
+proxy_pass http://hystrix2:8082;
+}
+</body>
+</html>
