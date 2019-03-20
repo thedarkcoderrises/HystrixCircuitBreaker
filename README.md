@@ -1,6 +1,6 @@
 # HystrixCircuitBreaker
 
-TeckStack :
+TechStack :
  - SpringBoot
  - Hystrix CircuitBreaker
  - Dockerized
