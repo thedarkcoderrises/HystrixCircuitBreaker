@@ -41,11 +41,11 @@ pipeline {
             steps {
                script{
                containerId = sh (
-                       script :'docker ps -a -q --filter="name=mynginx"',
+                       script :'docker ps -a -q --filter="name=nginx"',
                        returnStdout: true
                        ).trim()
                    if("${containerId}"!= ""){
-                       sh 'docker rm -f $(docker ps -a -q --filter="name=mynginx")'
+                       sh 'docker rm -f $(docker ps -a -q --filter="name=nginx")'
                        sh 'docker rmi -f $(docker images --filter=reference=mynginx --format "{{.ID}}")'
                    }
                }
