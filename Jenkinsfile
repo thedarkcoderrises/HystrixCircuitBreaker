@@ -39,7 +39,6 @@ pipeline {
        stage('Staging Nginx-DockerImage') {
            agent any
             steps {
-               sh 'cd ./nginx_setup'
                script{
                containerId = sh (
                        script :'docker ps -a -q --filter="name=mynginx"',
@@ -50,7 +49,7 @@ pipeline {
                        sh 'docker rmi -f $(docker images --filter=reference=mynginx --format "{{.ID}}")'
                    }
                }
-                sh 'docker build -t mynginx:1.0 .'
+                sh 'docker build -t mynginx:1.0 ./nginx_setup/'
               }
           }
           stage('Containerising Nginx') {
