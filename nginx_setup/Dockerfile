@@ -5,4 +5,4 @@ RUN rm /etc/nginx/nginx.conf
 COPY ./default.conf /etc/nginx/conf.d
 COPY ./nginx.conf /etc/nginx
 COPY ./proxy.conf /etc/nginx
-COPY /staticHTML/ /usr/share/nginx/html/
+COPY ./index.html /usr/share/nginx/html/
