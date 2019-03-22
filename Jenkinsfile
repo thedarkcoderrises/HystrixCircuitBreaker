@@ -24,7 +24,7 @@ pipeline {
                         ).trim()
                         if("${containerId}"!= ""){
                           sh 'docker rm -f $(docker ps -a -q --filter="name=hystrix")'
-                          sh 'docker rmi $(docker images --filter=reference=hystrix --format "{{.ID}}")'
+                          sh 'docker rmi -f $(docker images --filter=reference=hystrix --format "{{.ID}}")'
                         }
                     }
                     sh 'docker build -t hystrix:1.0 .'
@@ -47,7 +47,7 @@ pipeline {
                        ).trim()
                    if("${containerId}"!= ""){
                        sh 'docker rm -f $(docker ps -a -q --filter="name=mynginx")'
-                       sh 'docker rmi $(docker images --filter=reference=mynginx --format "{{.ID}}")'
+                       sh 'docker rmi -f $(docker images --filter=reference=mynginx --format "{{.ID}}")'
                    }
                }
                 sh 'docker build -t mynginx:1.0 .'
