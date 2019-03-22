@@ -55,7 +55,7 @@ pipeline {
           stage('Containerising Nginx') {
               agent any
                steps {
-                       sh 'docker run -p 8080:80 --name nginx -v /var/run/docker.sock:/var/run/docker.sock:ro --link=hystrix1 --link=hystrix2 -d mynginx:1.0'
+                       sh 'docker run -p 8081:80 --name nginx -v /var/run/docker.sock:/var/run/docker.sock:ro --link=hystrix1 --link=hystrix2 -d mynginx:1.0'
                      }
              }
     }
