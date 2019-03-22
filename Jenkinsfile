@@ -39,13 +39,17 @@ pipeline {
        stage('Staging Nginx-DockerImage') {
            agent any
             steps {
-                sh 'cd ./nginx_setup'
-                script{
-                    if($(docker ps -aqf "name=mynginx")!=""){
-                        sh 'docker rm -f $(docker ps -a -q --filter="name=mynginx")'
-                        sh 'docker rmi $(docker images --filter=reference=mynginx --format "{{.ID}}")'
-                    }
-                }
+               sh 'cd ./nginx_setup'
+               script{
+               containerId = sh (
+                       script :'docker ps -a -q --filter="name=mynginx"',
+                       returnStdout: true
+                       ).trim()
+                   if("${containerId}"!= ""){
+                       sh 'docker rm -f $(docker ps -a -q --filter="name=mynginx")'
+                       sh 'docker rmi $(docker images --filter=reference=mynginx --format "{{.ID}}")'
+                   }
+               }
                 sh 'docker build -t mynginx:1.0 .'
               }
           }
